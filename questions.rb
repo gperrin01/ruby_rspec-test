@@ -10,18 +10,18 @@ end
 
 # remove instances of nil (but NOT false) from an array
 def remove_nils_from_array(array)
-  array.compact!
+  array.compact
 end
 
 # remove instances of nil AND false from an array
 def remove_nils_and_false_from_array(array)
-  array.compact!.keep_if { |i| i  }
+  array.compact.keep_if { |i| i  }
 end
 
 # don't reverse the array, but reverse every word inside it. e.g.
 # ['dog', 'monkey'] becomes ['god', 'yeknom']
 def reverse_every_element_in_array(array)
-  array.map! {|i| i.reverse  }
+  array.map {|i| i.reverse  }
 end
 
 # given an array of student names, like ['Bob', 'Dave', 'Clive']
@@ -29,8 +29,7 @@ end
 # [['Bob', 'Clive'], ['Bob', 'Dave'], ['Clive', 'Dave']]
 # make sure you don't have the same pairing twice, 
 def every_possible_pairing_of_students(array)
-  pairing = array.combination(2).to_a
-  pairing
+  array.combination(2).to_a
 end
 
 # discard the first 3 elements of an array, 
@@ -49,7 +48,7 @@ end
 def array_sort_by_last_letter_of_word(array)
   # reverse each word, sort the array, then reverse the words
   array.map! {|i| i.reverse  }.sort!
-  array.map! {|i| i.reverse  }
+  array.map {|i| i.reverse  }
 end
 
 # cut strings in half, and return the first half, e.g.
@@ -65,7 +64,7 @@ end
 # turn a positive integer into a negative integer. A negative integer
 # stays negative
 def make_numbers_negative(number)
-  
+  number > 0 ? 0-number : number
 end
 
 # turn an array of numbers into two arrays of numbers, one an array of 
@@ -73,7 +72,9 @@ end
 # even numbers come first
 # so [1, 2, 3, 4, 5, 6] becomes [[2, 4, 6], [1, 3, 5]]
 def separate_array_into_even_and_odd_numbers(array)
-  
+  even = array.select {|i| i.even?}
+  odd = array.select {|i| i.odd?}
+  result = [even, odd]
 end
 
 # count the numbers of elements in an element which are palindromes
@@ -81,23 +82,31 @@ end
 # e.g. 'bob'. So in the array ['bob', 'radar', 'eat'], there
 # are 2 palindromes (bob and radar), so the method should return 2
 def number_of_elements_that_are_palindromes(array)
-  
+  count = 0
+  array.each {|item| count += 1 if item == item.reverse  }
+  count
 end
 
 # return the shortest word in an array
 def shortest_word_in_array(array)
-  
+  #get all the lengths of words, get index of shorter, return shorter
+  lengths = array.map { |item| item.length  }
+  #I now get array[index] with index index of the shortest lengths in lengths
+  array[  lengths.index(lengths.min)  ]
 end
 
 # return the longest word in an array
 def longest_word_in_array(array)
-  
+    #get all the lengths of words, get index of shorter, return shorter
+  lengths = array.map { |item| item.length  }
+  #I now get array[index] with index index of the shortest lengths in lengths
+  array[  lengths.index(lengths.max)  ]
 end
 
 # add up all the numbers in an array, so [1, 3, 5, 6]
 # returns 15
 def total_of_array(array)
-  
+  array.inject(:+)
 end
 
 # turn an array into itself repeated twice. So [1, 2, 3]
