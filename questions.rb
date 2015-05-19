@@ -112,18 +112,21 @@ end
 # turn an array into itself repeated twice. So [1, 2, 3]
 # becomes [1, 2, 3, 1, 2, 3]
 def double_array(array)
-  
+  (array.map {|i| i} << array.map {|i| i}).flatten
+  # OR  ar2 = array.map {|i| i}
+  # array.each { |i| ar2 << i}
+  # ar2
 end
 
 # convert a symbol into a string
 def turn_symbol_into_string(symbol)
-  
+  symbol.to_s 
 end
 
 # get the average from an array, rounded to the nearest integer
 # so [10, 15, 25] should return 17
 def average_of_array(array)
-  
+ (array.inject(:+) / array.length.to_f).round
 end
 
 # get all the elements in an array, up until the first element
@@ -131,7 +134,7 @@ end
 # [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
 # becomes [1, 3, 5, 4, 1, 2]
 def get_elements_until_greater_than_five(array)
-  
+  array.take_while { |i| i<=5  }
 end
 
 # turn an array (with an even number of elements) into a hash, by

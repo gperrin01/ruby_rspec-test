@@ -91,7 +91,7 @@ describe 'Ruby Homework' do
     expect(n).to eq 25
   end
 
-  fit 'double_array' do
+  it 'double_array' do
     n = double_array [1, 2, 3]
     expect(n).to eq [1, 2, 3, 1, 2, 3]
   end
@@ -111,7 +111,7 @@ describe 'Ruby Homework' do
     expect(n).to eq [1, 3, 5, 4, 1, 2]
   end
 
-  it 'convert_array_to_a_hash' do
+  fit 'convert_array_to_a_hash' do
     n = convert_array_to_a_hash ['a', 'b', 'c', 'd']
     expect(n).to eq({'a' => 'b', 'c' => 'd'})
   end
