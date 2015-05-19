@@ -116,7 +116,7 @@ describe 'Ruby Homework' do
     expect(n).to eq({'a' => 'b', 'c' => 'd'})
   end
 
-  fit 'get_all_letters_in_array_of_words' do
+  it 'get_all_letters_in_array_of_words' do
     n = get_all_letters_in_array_of_words ['cat', 'dog', 'fish']
     expect(n).to eq ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
   end
@@ -174,7 +174,7 @@ describe 'Ruby Homework' do
     expect(n).to eq 20
   end
 
-  it 'is_a_3_dot_range?' do
+  fit 'is_a_3_dot_range?' do
     a = is_a_3_dot_range? 1..20
     b = is_a_3_dot_range? 1...20
 

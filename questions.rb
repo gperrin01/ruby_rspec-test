@@ -159,32 +159,32 @@ end
 # {'a' => 'b', 'c' => 'd'} becomes
 # {'b' => 'a', 'd' => 'c'}
 def swap_keys_and_values_in_a_hash(hash)
-  
+  hash.invert
 end
 
 # in a hash where the keys and values are all numbers
 # add all the keys and all the values together, e.g.
 # {1 => 1, 2 => 2} becomes 6
 def add_together_keys_and_values(hash)
-  
+  hash.flatten.inject(:+)
 end
 
 # take out all the capital letters from a string
 # so 'Hello JohnDoe' becomes 'ello ohnoe'
 def remove_capital_letters_from_string(string)
-  
+  string.delete "/[A-Z]/"
 end
 
 # round up a float up and convert it to an Integer,
 # so 3.214 becomes 4
 def round_up_number(float)
-  
+  (float+0.5).round
 end
 
 # round down a float up and convert it to an Integer,
 # so 9.52 becomes 9
 def round_down_number(float)
-  
+  (float-0.5).round
 end
 
 # take a date and format it like dd/mm/yyyy, so Halloween 2013
@@ -196,7 +196,8 @@ end
 # get the domain name *without* the .ly (or .com, .co etc) part, from an email address
 # so jeremy@generalassemb.ly becomes generalassemb.ly
 def get_domain_name_from_email_address(email)
-  
+  # email.split('@')[1]
+  email.partition('@')[2]
 end
 
 # capitalize the first letter in each word of a string, 
@@ -205,20 +206,23 @@ end
 # 'the lion the witch and the wardrobe' becomes
 # 'The Lion the Witch and the Wardrobe'
 def titleize_a_string(string)
-
+  array = string.split(' ')
+  array.map! {|word|   ['a', 'and', 'the'].include?(word) ? word : word.capitalize}
+  array[0].capitalize!
+  string = array.join(' ')
 end
 
 # return true if a string contains any special characters
 # where 'special character' means anything apart from the letters
 # a-z (uppercase and lower) or numbers
 def check_a_string_for_special_characters(string)
-  
+
 end
 
 # get the upper limit of a range. e.g. for the range 1..20, you
 # should return 20
 def get_upper_limit_of(range)
-  
+  range.max
 end
 
 # should return true for a 3 dot range like 1...20, false for a 
