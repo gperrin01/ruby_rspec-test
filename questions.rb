@@ -112,10 +112,8 @@ end
 # turn an array into itself repeated twice. So [1, 2, 3]
 # becomes [1, 2, 3, 1, 2, 3]
 def double_array(array)
-  (array.map {|i| i} << array.map {|i| i}).flatten
-  # OR  ar2 = array.map {|i| i}
-  # array.each { |i| ar2 << i}
-  # ar2
+  array += array
+  # much easier than   (array.map {|i| i} << array.map {|i| i}).flatten
 end
 
 # convert a symbol into a string
@@ -141,7 +139,12 @@ end
 # pairing up elements. e.g. ['a', 'b', 'c', 'd'] becomes
 # {'a' => 'b', 'c' => 'd'}
 def convert_array_to_a_hash(array)
-  
+  # hash = {}
+  # (0..array.length).each { |i| hash[array[2*i]] = array[2*i+1]  if array[2*i+1] != nil  }
+  # hash
+
+  Hash[*array]
+  # some say it can crash on loads of data so use => Hash[array.each_slice(2).to_a]
 end
 
 # get all the letters used in an array of words and return
@@ -149,7 +152,7 @@ end
 # . e.g. the array ['cat', 'dog', 'fish'] becomes
 # ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
 def get_all_letters_in_array_of_words(array)
-  
+  array.join.split('').sort.uniq
 end
 
 # swap the keys and values in a hash. e.g.
