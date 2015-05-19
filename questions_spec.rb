@@ -58,7 +58,7 @@ describe 'Ruby Homework' do
     expect(b).to eq 'app'
   end
 
-  it 'make_numbers_negative' do
+  fit 'make_numbers_negative' do
     a = make_numbers_negative 5
     b = make_numbers_negative -7
 
