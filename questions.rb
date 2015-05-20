@@ -278,7 +278,12 @@ end
 # go from 1 to 100
 # (there's no RSpec test for this one)
 def fizzbuzz_without_modulo
-
+  new = (1..100).to_a 
+  (1..100).each_index {|num, i|  new[i] = num }
+  (1..100).each_index {|num, i|  new[3*i-1] = 'fizz' if ( new[3*i-1] != nil && i>0) }
+  (1..100).each_index {|num, i|  new[3*i-1] = 'buzz' if ( new[5*i-1] != nil && i>0) }
+  (1..100).each_index {|num, i|  new[15*i-1] = 'fizzbuzz' if ( new[15*i-1] != nil && i>0) }
+  new
 end
 
 # print the lyrics of the song 99 bottles of beer on the wall
